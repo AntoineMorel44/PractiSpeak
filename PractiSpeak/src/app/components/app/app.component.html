@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="participants">
+    <div class="icons">
+      <div class="icon-user"></div>
+      <div class="icon-language"></div>
+    </div>
+    <div class="name">
+      Juan Carlos
+    </div>
+  </div>
+  <div class="messages-container">
+    <div #messagesDiv class="messages">
+      <div *ngFor="let message of messages" class="message" [class.message-user]="message.role === ChatCompletionRequestMessageRoleEnum.User">
+        <div *ngIf="message.role === ChatCompletionRequestMessageRoleEnum.User" class="user">
+          <div class="user-text">{{message.content}}</div>
+        </div>
+        <div *ngIf="message.tooltip" class="tooltip">
+          <span class="user-text">{{message.tooltip}}</span>
+        </div>
+        <div *ngIf="message.role === ChatCompletionRequestMessageRoleEnum.Assistant" class="assistant">
+          <div class="assistant-text">{{message.content}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-actions">
+    <form (ngSubmit)="sendMessage()">
+      <div class="actions-container">
+        <input class="form-input" [(ngModel)]="userMessage" name="userMessage" required placeholder="Write">
+        <button class="form-button" type="submit"><img src="/assets/message.svg"></button>
+      </div>
+      
+    </form>
+  </div>
+</div>

@@ -1,0 +1,157 @@
+:host {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 15px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 1px;
+  color: #FFFFFF;
+  height: 100%;
+  width: 100%;
+
+  .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 40px 40px 100px rgba(24, 48, 63, 0.5);
+      border-radius: 40px;
+      background-color: #292F3F;
+      padding: 51px 35px 0 35px; 
+      height: 100%;
+      width: 100%;
+      margin-top: 50px;
+
+      .participants {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .icons {
+          display: flex;
+          
+
+          .icon-user {
+            background: url("/assets/user.jpg");
+            background-size: cover;
+            filter: drop-shadow(4px 4px 24px rgba(0, 0, 0, 0.45));
+            border-radius: 30px;
+            width: 44px;
+            height: 44px;
+          }
+  
+          .icon-language {
+            background: url("/assets/spain.png");
+            background-size: cover;
+            filter: drop-shadow(4px 4px 24px rgba(0, 0, 0, 0.45));
+            border-radius: 30px;
+            width: 44px;
+            height: 44px;
+            margin-left: 10px;
+          }
+      }
+
+      .name {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 18px;
+        /* identical to box height */
+
+        display: flex;
+        align-items: flex-end;
+        text-align: right;
+        letter-spacing: 1px;
+        text-transform: capitalize;
+
+        color: #FFFFFF;
+      }
+    }
+
+      .messages-container {
+        overflow: hidden;
+        margin: 35px 0 10px 0;    
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        height: 100%;
+
+        .messages::-webkit-scrollbar {
+          display: none;
+        }
+      
+        .messages {
+          overflow-y: scroll;
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+
+          .message {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            align-items: flex-end;
+            margin-top: 16px;
+            
+            .user {
+              background: #272A35;
+              border-radius: 20px;
+              padding: 10px 14px;
+              text-align: right;
+              margin-left: 65px;
+            }
+    
+            .tooltip {
+              border-radius: 20px;
+              padding: 5px 14px;
+              text-align: right;
+              margin-left: 65px;
+            }
+    
+            .assistant {
+              background: #373E4E;
+              border-radius: 20px;
+              padding: 10px 14px;
+              margin-right: 65px;
+            }
+          }
+        }
+      }
+
+      .bottom-actions {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 20px 52px 25px;
+
+        .actions-container {
+          display: flex;
+          align-items: center;
+
+          .form-input {
+            width: 275px;
+            height: 40px;
+    
+            background: #272A35;
+            color: white;
+            border-radius: 10px;
+            padding: 0px 15px;
+            margin: 0;
+            border: 0;
+          }
+    
+          .form-button {
+            background: #373E4E;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            margin-left: -40px;
+            border: 0;
+          }
+        }
+      }
+    }
+
+}
+  
+  
+  
