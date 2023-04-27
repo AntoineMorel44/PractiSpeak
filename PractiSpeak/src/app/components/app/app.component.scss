@@ -9,18 +9,17 @@
   color: #FFFFFF;
   height: 100%;
   width: 100%;
+  box-sizing: border-box;
 
   .container {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 40px 40px 100px rgba(24, 48, 63, 0.5);
-      border-radius: 40px;
       background-color: #292F3F;
       padding: 51px 35px 0 35px; 
       height: 100%;
       width: 100%;
-      margin-top: 50px;
+      box-sizing: border-box;
 
       .participants {
         display: flex;
@@ -120,7 +119,8 @@
 
       .bottom-actions {
         display: flex;
-        justify-content: space-between;
+        // justify-content: space-between;
+        justify-content: center;
         margin: 0 20px 52px 25px;
 
         .actions-container {
