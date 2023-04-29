@@ -1,5 +1,10 @@
 {
-  "name": "fexilo",
-  "integrations": {},
-  "type": "angular"
+  "defaultProject": "PractiSpeak",
+  "projects": {
+    "PractiSpeak": {
+      "name": "PractiSpeak",
+      "integrations": {},
+      "type": "angular"
+    }
+  }
 }

@@ -3,7 +3,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 const config: CapacitorConfig = {
   appId: 'com.fexilo.app',
   appName: 'Fexilo',
-  webDir: 'dist',
+  webDir: 'dist/PractiSpeak',
   bundledWebRuntime: false
 };
 
