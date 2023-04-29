@@ -15,7 +15,7 @@ export class OpenaiService {
   constructor() { 
     let configuration = new Configuration({
       organization:"org-n12gBkscmbYuoTyDuU1l4dfN",
-      apiKey: "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",
+      apiKey: "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",
     });
   
     delete configuration.baseOptions.headers['User-Agent'];
