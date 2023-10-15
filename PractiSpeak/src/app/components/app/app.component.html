@@ -14,11 +14,11 @@
         <div *ngIf="message.role === ChatCompletionRequestMessageRoleEnum.User" class="user">
           <div class="user-text">{{message.content}}</div>
         </div>
-        <div *ngIf="message.tooltip" class="tooltip">
-          <span class="user-text">{{message.tooltip}}</span>
-        </div>
         <div *ngIf="message.role === ChatCompletionRequestMessageRoleEnum.Assistant" class="assistant">
           <div class="assistant-text">{{message.content}}</div>
+        </div>
+        <div *ngIf="message.tooltip" class="tooltip" [class.tooltip-assistant]="message.role === ChatCompletionRequestMessageRoleEnum.Assistant">
+          <span class="user-text">{{message.tooltip}}</span>
         </div>
       </div>
     </div>

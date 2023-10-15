@@ -105,6 +105,11 @@
               padding: 5px 14px;
               text-align: right;
               margin-left: 65px;
+
+                &.tooltip-assistant {    
+                  margin-right: 48px;
+                  margin-left: 0;
+                }
             }
     
             .assistant {
