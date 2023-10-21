@@ -1,16 +1,16 @@
 <div class="container">
-  <div class="participants">
+  <div *ngIf="!showLanguagePanel" class="participants">
     <div class="icons">
       <div class="icon-user"></div>
       <div class="icon-language"></div>
     </div>
     <div class="name">
-      Juan Carlos
+      Ewan - {{ language }}
     </div>
   </div>
   <div class="messages-container">
-    <div #messagesDiv class="messages">
-      <div *ngFor="let message of messages" class="message" [class.message-user]="message.role === ChatCompletionRequestMessageRoleEnum.User">
+    <div *ngIf="!showLanguagePanel" #messagesDiv class="messages">
+      <div *ngFor="let message of interfaceMessages" class="message" [class.message-user]="message.role === ChatCompletionRequestMessageRoleEnum.User">
         <div *ngIf="message.role === ChatCompletionRequestMessageRoleEnum.User" class="user">
           <div class="user-text">{{message.content}}</div>
         </div>
@@ -18,15 +18,25 @@
           <div class="assistant-text">{{message.content}}</div>
         </div>
         <div *ngIf="message.tooltip" class="tooltip" [class.tooltip-assistant]="message.role === ChatCompletionRequestMessageRoleEnum.Assistant">
-          <span class="user-text">{{message.tooltip}}</span>
+          <span *ngIf="message.translated || message.role === ChatCompletionRequestMessageRoleEnum.User" class="user-text">{{message.tooltip}}</span>
+          <span *ngIf="!message.translated && message.role === ChatCompletionRequestMessageRoleEnum.Assistant" class="user-text" (click)="message.translated = true">Traduire le message ➡️📖</span>
         </div>
+      </div>
+      <div *ngIf="error" class="error"><h2>L'appli a rencontré une erreur, veuillez renvoyer un message ou rafraichir la page ❌</h2></div>
+      <div *ngIf="loading" class="lds-ripple"><div></div><div></div></div>
+    </div>
+    <div class="language" *ngIf="showLanguagePanel">
+      Quelle langue souhaitez-vous pratiquer ?
+      <input class="form-input input-language" [(ngModel)]="language" name="userMessage" required placeholder="Exemple : Anglais" autocomplete="off">
+      <div class="language-button">
+        <button (click)="validateLanague()" type="submit">Valider</button>
       </div>
     </div>
   </div>
   <div class="bottom-actions">
-    <form (ngSubmit)="sendMessage()">
+    <form *ngIf="!showLanguagePanel" (ngSubmit)="sendMessage()">
       <div class="actions-container">
-        <input class="form-input" [(ngModel)]="userMessage" name="userMessage" required placeholder="Write">
+        <input class="form-input" [(ngModel)]="userMessage" name="userMessage" required placeholder="Écrire un message..." autocomplete="off">
         <button class="form-button" type="submit"><img src="/assets/message.svg"></button>
       </div>
       
