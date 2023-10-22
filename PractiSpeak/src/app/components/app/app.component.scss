@@ -75,15 +75,10 @@
         flex-direction: column;
         justify-content: end;
         height: 100%;
-
-        .messages::-webkit-scrollbar {
-          display: none;
-        }
       
         .messages {
           overflow-y: scroll;
-          -ms-overflow-style: none;
-          scrollbar-width: none;
+          height: 100%;
 
           .message {
             display: flex;
@@ -147,12 +142,13 @@
   background: #272A35;
   color: white;
   border-radius: 10px;
-  padding: 0px 15px;
+  padding: 0px 50px 0 15px;
   margin: 0;
   border: 0;
 
   &.input-language {
-    width: 100%;
+    width: calc(100% - 8px);
+    margin: 20px 3px;
   }
 }
 
@@ -168,10 +164,6 @@
 .language {
   height: 75%;
   width: 100%;
-
-  input {
-    margin: 20px 0;
-  }
 
   .language-button {
     width: 100%;

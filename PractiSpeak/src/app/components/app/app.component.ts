@@ -29,18 +29,22 @@ export class AppComponent {
       this.technicalMessages.push({ role: 'system', content: "Le but de l'assistant est de dicuter avec l'utilisateur autour de la culture, l'art, l'histoire et le sport du pays associé à " + this.language + ". Par exemple, si l'utilisateur te demande comment tu vas, tu répond et tu enchaine par une annecdote sur la culture du pays, et tu essaye de l'encourager à parler avec toi. Ne pose pas des questions génériques comme 'qu'est ce que tu aimerai savoir' mais plutot des questions spécifiques ou des choix de topics de discussion. Le but est que l'utilisateur parle en " + this.language + " et que l'assistant réponde en " + this.language + ". A chacune des phrases de l'utilisateur, l'assistant répond par un json qui prend 5 champs : answer (qui constitue la réponse directe à la phrase de l'utilisateur, comme si une personne " + this.language + " locale répondait), traduction (qui constitue la traduction en francais du champ answer), correctionNaturalLanguage (qui explique en détail en Français les fautes de l'utilisateur, ou des meilleures formulation de synthaxe concernant la dernière phrase de l'utilisateur, en expliquant à l'utilisateur ce qu'elles veulent dire. Si l'utilisateur a répondu en francais, l'assistant peut poliement suggérer à l'utilsateur de parler " + this.language + " pour progresser), un champ correctionBoolean (qui prend la valeur 1 si  le champ 'correction' contient des erreurs, et 0 sinon). A n'IMPORTE QUEL MOMENT de la discussion, si la réponse n'est pas au format JSON { answer: ..., correctionBoolean: ..., correctionNaturalLanguage: ..., traduction: ... } elle est considérée comme INCORRECTE.", tooltip: '' });
       this.showLanguagePanel = false;
       this.userMessage = "👋";
-      this.sendMessage();
+      this.sendMessage(undefined);
     }
   }
 
-  sendMessage(): void {
+  sendMessage(inputElement?: HTMLInputElement): void {
+    if (inputElement) {
+      inputElement.blur();
+    }
+
     const newUserMessage = { role: ChatCompletionRequestMessageRoleEnum.User, content: this.userMessage, tooltip: '' };
     this.interfaceMessages.push(newUserMessage);
     this.technicalMessages.push(newUserMessage);
-    this.scrollMessagesToBottom();
     this.loading = true;
     this.error = false;
     this.userMessage = '';
+    this.scrollMessagesToBottom();
 
     this.openaiService.continueDiscussion(this.technicalMessages).subscribe(response => {
       console.log('having response', response);
@@ -60,7 +64,6 @@ export class AppComponent {
 
       this.technicalMessages.push({ role: ChatCompletionRequestMessageRoleEnum.Assistant, content: response.body, tooltip: '' });
       this.interfaceMessages.push({ role: ChatCompletionRequestMessageRoleEnum.Assistant, content: jsonObject.answer, tooltip: jsonObject.traduction, translated: false });
-      this.scrollMessagesToBottom();
     })
 
     
