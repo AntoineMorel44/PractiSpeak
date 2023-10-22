@@ -55,7 +55,7 @@ export class AppComponent {
           console.error("Error parsing JSON string:", error);
       }
 
-      const emoji = jsonObject.correctionBoolean === "1" ? '❌' : '✔️';
+      const emoji = jsonObject.correctionBoolean == "1" ? '❌' : '✅';
       newUserMessage.tooltip = emoji + ' ' + jsonObject.correctionNaturalLanguage;
 
       this.technicalMessages.push({ role: ChatCompletionRequestMessageRoleEnum.Assistant, content: response.body, tooltip: '' });
